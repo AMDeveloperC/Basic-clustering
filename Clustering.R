@@ -14,9 +14,9 @@ clusterizing <- function(dataset, distanceMethod, clusterMethod, clustersNumber,
  
     # Composing output file name
     numberOfFeatures <- ncol(dataset)-1;
-    nome <- paste("Features", numberOfFeatures, sep="_")
-    nome <- paste(outPath, nome, sep="");
-    fileName <- paste(nome, ".txt", sep="");
+    name <- paste("Features", numberOfFeatures, sep="_")
+    name <- paste(outPath, name, sep="");
+    fileName <- paste(name, ".txt", sep="");
 
     # Building confusion matrix
     groups <- cutree(hlm, k=clustersNumber);
@@ -28,15 +28,15 @@ clusterizing <- function(dataset, distanceMethod, clusterMethod, clustersNumber,
 
 # Demo
 if (interactive()) {
-    # Assumption:
+    # Assumptions:
     # - you have labeled matrixes in the parent folder
     # - the output will be stored in the parent folder
 
     pathToData <- "..";
-    files <- list.files(path = pathToData);
+    files <- list.files(path=pathToData);
     for (i in 1:length(files)) {
-        nomeFile <- paste(pathToData, files[i], sep=""); # DO NOT DELETE!
-        data <- read.table(nomeFile, header=T, sep="");
+        nameFile <- paste(pathToData, files[i], sep=""); # DO NOT DELETE!
+        data <- read.table(nameFile, header=T, sep="");
 	clusterizing(data , "cosine", "average", 4, "..");
     }
 }
